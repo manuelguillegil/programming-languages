@@ -1,6 +1,7 @@
 // MANUEL GUILLERMO GIL 14-10397 <14-10397@usb.ve>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 // alpha = 5
 // beta = 4
 // f5,4(n)
@@ -77,7 +78,20 @@ int main (void){
   int n = 0;
   printf("Ingrese el valor de un número entero para las diferentes funciones recursivas: \n");
   scanf("%i", &n);
-  printf("Función recursiva normal: %i\n", recursive_func(60));
-  printf("Función recursiva de cola: %i\n", tail_recursive_func(60));
-  printf("Función recursiva iterativo: %i\n", iterative_recursive_func(60));
+
+  clock_t t;
+  t = clock();
+  printf("Función recursiva normal: %i\n", recursive_func(n));
+  double time = ((double) t) / CLOCKS_PER_SEC;
+  printf("Tiempo: %f\n", time);
+
+  t = clock() -t;
+  printf("Función recursiva de cola: %i\n", tail_recursive_func(n));
+  time = ((double) t) / CLOCKS_PER_SEC;
+  printf("Tiempo: %f\n", time);
+
+  t = clock() -t;
+  printf("Función recursiva iterativo: %i\n", iterative_recursive_func(n));
+  time = ((double) t) / CLOCKS_PER_SEC;
+  printf("Tiempo: %f\n", time);
 }
